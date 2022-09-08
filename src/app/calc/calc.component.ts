@@ -13,19 +13,53 @@ export class CalcComponent implements OnInit {
 
   public nums = [];
   public answer;
+  public input;
+
 
   ngOnInit() {
   }
 
-  add(nums)
-  {
-    for(let i = 0; i<nums.length; i++)
-    {
-      this.answer+=nums[i];
-      nums[i]=0;
-    }
-    return this.answer;
+  pressNum(num: string) {
+
+    //Do Not Allow . more than once
+
+    //Do Not Allow 0 at beginning. 
+    //Javascript will throw Octal literals are not allowed in strict mode.
+
   }
+
+
+  getLastOperand() {
+
+  }
+
+
+  pressOperator(op: string) {
+
+    //Do not allow operators more than once
+
+    }
+
+
+  
+
+
+  clear() {
+ 
+  }
+
+  allClear() {
+
+  }
+
+  calcAnswer() {
+
+  }
+
+  getAnswer() {
+
+  }
+
 
   
 
