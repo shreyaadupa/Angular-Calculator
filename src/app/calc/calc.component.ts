@@ -8,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class CalcComponent implements OnInit {
 
   constructor() { }
-  //every time a number is pressed add it to the array in the order it is pressed
-  //when calling the methods take the array param and execute the operation between each number present
-
 
   ngOnInit() {
   }
@@ -47,7 +44,8 @@ export class CalcComponent implements OnInit {
   }
 
 
-  getLastOperand() 
+  getLastOperand() //gets the position or index number of the operation symbol
+  //checks if the there is a new operation being done to replace the operation being done and continue evaluating the expression
   {
     let pos: number;
     console.log(this.userInput)
@@ -78,7 +76,7 @@ export class CalcComponent implements OnInit {
     this.userInput = '';
   }
 
-  calcAnswer() 
+  calcAnswer() //gets the last key entered and checked if its a decimal point or operation symbol and if so will ignore it to get only the number
   {
     let formula = this.userInput;
 
@@ -94,11 +92,11 @@ export class CalcComponent implements OnInit {
       formula = formula.substr(0, formula.length - 1);
     }
 
-    console.log("Formula " + formula);
-    this.answer = eval(formula);
+    //console.log("Formula " + formula);
+    this.answer = eval(formula); //eval function executes an expression
   }
 
-  getAnswer() 
+  getAnswer() //calls calcAnswer method to get result and display it 
   {
     this.calcAnswer();
     this.userInput = this.userInput;
