@@ -6,7 +6,7 @@
           <div class="card-body p-4">
 
             <div class="input-group input-group-lg col-sm-12 m-0 p-0">
-              <div class="col-sm-12 form-control text-lg-right" type="text">{{input}}</div>
+              <div class="col-sm-12 form-control text-lg-right" type="text">{{userInput}}</div>
             </div>
 
             <br>
@@ -19,45 +19,42 @@
 
             <div style="text-align: center;">
 
-            <button type="button" style="margin: 2px;" class="btn btn-outline-primary">+</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-primary">-</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-primary">÷</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-primary">×</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-primary" (click)="pressOperator('+')">+</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-primary" (click)="pressOperator('-')">-</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-primary"(click)="pressOperator('÷')">÷</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-primary" (click)="pressOperator('*')">×</button>
 
             </div>
 
             <br>
             <div style="text-align: center;">
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">0</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">1</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">2</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">3</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('0')">0</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('1')">1</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('2')">2</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('3')">3</button>
 
             </div>
             <br>
             <div style="text-align: center;">
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">4</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">5</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">6</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">7</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('4')">4</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('5')">5</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('6')">6</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('7')">7</button>
             </div>
 
             <br>
             <div style="text-align: center;">
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">8</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">9</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-light">.</button>
-            <button type="button" style="margin: 2px;" class="btn btn-outline-success">=</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('8')">8</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('9')">9</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-light" (click)="pressNum('.')">.</button>
+            <button type="button" style="margin: 2px;" class="btn btn-outline-success" (click)="getAnswer()">=</button>
             </div>
 
             <br>
 
             <div style="text-align: center;">
-              <button type="button" style="margin: 2px;" class="btn btn-outline-danger btn-lg btn-block">Clear</button>
+              <button type="button" style="margin: 2px;" class="btn btn-outline-danger btn-lg btn-block" (click)="allClear()">Clear</button>
             </div>
-
-
-
 
           </div>
         </div>

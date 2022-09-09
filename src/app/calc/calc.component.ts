@@ -11,53 +11,98 @@ export class CalcComponent implements OnInit {
   //every time a number is pressed add it to the array in the order it is pressed
   //when calling the methods take the array param and execute the operation between each number present
 
-  public nums = [];
-  public answer;
-  public input;
-
 
   ngOnInit() {
   }
 
+  userInput: string = '';
+  answer: string = '';
+
+
   pressNum(num: string) {
 
-    //Do Not Allow . more than once
+    //only allow decimal point once
+    if (num == ".") {
+      if (this.userInput != "") {
 
-    //Do Not Allow 0 at beginning. 
-    //Javascript will throw Octal literals are not allowed in strict mode.
+        const lastNum = this.getLastOperand()
+        console.log(lastNum.lastIndexOf("."))
+        if (lastNum.lastIndexOf(".") >= 0) return;
+      }
+    }
 
+    //Do Not Allow 0 at beginning of user input
+    if (num == "0") {
+      if (this.userInput == "") {
+        return;
+      }
+      const previous = this.userInput[this.userInput.length - 1];
+      if (previous === '÷' || previous === '*' || previous === '-' || previous === '+') {
+        return;
+      }
+    }
+
+    this.userInput = this.userInput + num
+    this.calcAnswer();
   }
 
 
-  getLastOperand() {
-
+  getLastOperand() 
+  {
+    let pos: number;
+    console.log(this.userInput)
+    pos = this.userInput.toString().lastIndexOf("+")
+    if (this.userInput.toString().lastIndexOf("-") > pos) pos = this.userInput.lastIndexOf("-")
+    if (this.userInput.toString().lastIndexOf("*") > pos) pos = this.userInput.lastIndexOf("*")
+    if (this.userInput.toString().lastIndexOf("/") > pos) pos = this.userInput.lastIndexOf("/")
+    console.log('Last ' + this.userInput.substr(pos + 1))
+    return this.userInput.substr(pos + 1)
   }
 
 
   pressOperator(op: string) {
 
     //Do not allow operators more than once
-
+    const lastKey = this.userInput[this.userInput.length - 1];
+    if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+') {
+      return;
     }
 
-
-  
-
-
-  clear() {
- 
+    this.userInput = this.userInput + op
+    this.calcAnswer();
   }
 
-  allClear() {
-
+  allClear() //clears calculator of all operations and numbers
+  {
+    this.answer = '';
+    this.userInput = '';
   }
 
-  calcAnswer() {
+  calcAnswer() 
+  {
+    let formula = this.userInput;
 
+    let lastKey = formula[formula.length - 1];
+
+    if (lastKey === '.') {
+      formula = formula.substr(0, formula.length - 1);
+    }
+
+    lastKey = formula[formula.length - 1];
+
+    if (lastKey === '/' || lastKey === '*' || lastKey === '-' || lastKey === '+' || lastKey === '.') {
+      formula = formula.substr(0, formula.length - 1);
+    }
+
+    console.log("Formula " + formula);
+    this.answer = eval(formula);
   }
 
-  getAnswer() {
-
+  getAnswer() 
+  {
+    this.calcAnswer();
+    this.userInput = this.userInput;
+    if (this.userInput == "0") this.userInput = "";
   }
 
 
